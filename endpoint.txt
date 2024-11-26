@@ -1,0 +1,5 @@
+/get_exception_status
+/get_model_info
+/check_project_password_is_exist
+/get_project_status
+/monitoring_switch
