@@ -1,12 +1,35 @@
 import argparse
 import requests
+import json
+from fake_useragent import UserAgent
 
-def main(url, endpoint_path, args_path) :
-    endpoints = open(endpoint_path, 'r')
+def main(base_url, endpoint_path, args_path) :
+    ua = UserAgent().random
+    headers = {'user-agent': ua}
+    endpoints = open(endpoint_path, 'r').readlines()
     args = open(args_path, 'r')
+    for end in endpoints :
+        print(end.strip('\n'))
+        for i in args :
+            data = {}
+            arg = i.strip('\n').split(',')
+            for key in arg:
+                key = key.split(':')
+                data[key[0]] = key[1]
+            print(json.dumps(data))
+            print('')
+        url = base_url + end
+        response = requests.post(url, data, headers=headers)
+        if response.status_code == 200 :
+            print("[+] Status: 200")
+            print("[+] You might need to take more attention to this result.")
+        elif response.status_code == 403 :
+            print("[-] Status: 403") 
+            print("[-] This endpoint is forbidden.")
+        elif response.status_code == 404 :
+            print("[-] Status: 404")
+            print("[-] This endpoint is not found.")
     
-        
-    pass
 
 
 if __name__ == "__main__":
