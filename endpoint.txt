@@ -1,5 +1,4 @@
-/get_exception_status
-/get_model_info
-/check_project_password_is_exist
-/get_project_status
-/monitoring_switch
+/new_project
+/connection_with_p_id_p_pwd
+/delete_project
+/export_project
